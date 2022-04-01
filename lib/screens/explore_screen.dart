@@ -4,6 +4,7 @@ import '../components/components.dart';
 import '../models/models.dart';
 import '../api/mock_fooderlich_service.dart';
 
+
 class ExploreScreen extends StatelessWidget {
   final mockService = MockFooderlichService();
 
@@ -18,7 +19,7 @@ class ExploreScreen extends StatelessWidget {
         // TODO: Add nested List Views
         if (snapshot.connectionState == ConnectionState.done) {
           final recipes = snapshot.data?.todayRecipes ?? [];
-          // TODO: Replace this with TodayRecipeListView
+          return TodayRecipeListView(recipes: recipes);
           return Center(
             child: Container(
               child: const Text('Show TodayRecipeListView'),
