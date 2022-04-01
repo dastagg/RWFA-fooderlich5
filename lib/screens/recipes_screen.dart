@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich5/screens/explore_screen.dart';
 
 import '../models/models.dart';
 import '../api/mock_fooderlich_service.dart';
