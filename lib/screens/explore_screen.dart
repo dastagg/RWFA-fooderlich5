@@ -5,17 +5,31 @@ import '../models/models.dart';
 import '../api/mock_fooderlich_service.dart';
 
 class ExploreScreen extends StatelessWidget {
-  
   final mockService = MockFooderlichService();
 
   ExploreScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // TODO 1: Add TodayRecipeListView FutureBuilder 
-
-    return const Center(
-      child: Text('ExploreScreen'),
+    // TODO 1: Add TodayRecipeListView FutureBuilder
+    return FutureBuilder(
+      future: mockService.getExploreData(),
+      builder: (context, AsyncSnapshot<ExploreData> snapshot) {
+        // TODO: Add nested List Views
+        if (snapshot.connectionState == ConnectionState.done) {
+          final recipes = snapshot.data?.todayRecipes ?? [];
+          // TODO: Replace this with TodayRecipeListView
+          return Center(
+            child: Container(
+              child: const Text('Show TodayRecipeListView'),
+            ),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
